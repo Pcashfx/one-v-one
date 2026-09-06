@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — One V One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a> / FAQ</div>
+      <h1>Frequently Asked Questions</h1>
+      <p>Everything you need to know before your first duel.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How do I get paid when I win?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Once both sides confirm the result, your share of the prize is added to your One V One balance right away. From there you can withdraw to a linked bank account or card, subject to standard verification.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What happens if we disagree on the score?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Either player can open a dispute before the match is confirmed. Our review desk looks at submitted screenshots or recordings and makes a ruling — no funds move until the dispute is settled.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is this legal where I live?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Skill-based cash competition rules vary by state and country. You're responsible for confirming that entering paid matches is permitted where you live before you compete.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to be a certain age to play?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes. You must meet the minimum age required for cash-prize competition in your region to create an account, and you'll confirm this during signup.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which platforms are supported?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Most titles support PC, PlayStation, and Xbox, and many run cross-platform brackets and duels so you can compete against players regardless of which platform they're on.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I play as a team?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes. Duels and tournaments range from 1v1 up to full squads depending on the game and format — use Find Teammates if you need to fill out a roster.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between a duel and a tournament?<span class="plus">+</span></button>
+          <div class="faq-a"><p>A duel is a single head-to-head match you set up directly with an opponent. A tournament is a bracket with multiple teams competing single-elimination style for a shared, guaranteed prize pool.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Still have a question?</h2>
+        <a href="about.html#contact" class="btn btn-gold">Contact Support</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:14px; display:flex;">
+            <div class="mark"><span>1v1</span></div>
+            <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+          </a>
+          <p style="color:var(--text-faint); font-size:13px; max-width:260px; line-height:1.6;">A skill-based competitive gaming platform for duels, squads, and cash tournaments.</p>
+        </div>
+        <div>
+          <h4>Compete</h4>
+          <ul>
+            <li><a href="matchups.html">Open Matchups</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="games.html">Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="leaderboard.html">Leaderboards</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#terms">Terms &amp; Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p>Terms of Service · Privacy Policy · Responsible Play</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

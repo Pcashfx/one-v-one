@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — One V One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a> / About</div>
+      <h1>About One V One</h1>
+      <p>Built for players who'd rather prove it on the scoreboard than argue about it in chat.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap prose">
+      <h2>Who we are</h2>
+      <p>One V One is a competitive gaming platform built around head-to-head duels, squad matchups, and bracket tournaments across today's most popular titles. We handle the matchmaking, the rules, and the payout — you handle the winning.</p>
+
+      <h2>Fair play, first</h2>
+      <p>Every match is reviewed if it's disputed, every payout is logged, and every player agrees to the same rules before they queue up. We're not trying to be a casino — matches are decided by who plays better, not by chance.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Have a question, a partnership idea, or a press inquiry? Reach the team directly:</p>
+      <ul>
+        <li>Support: support@onevone.example</li>
+        <li>Press &amp; partnerships: press@onevone.example</li>
+        <li>Careers: careers@onevone.example</li>
+      </ul>
+
+      <h2 id="terms">Terms &amp; privacy (summary)</h2>
+      <p>This is a demo build, so the legal text below is placeholder copy — replace it with real Terms of Service and a Privacy Policy reviewed by counsel before you launch anything that touches real accounts, real money, or real user data.</p>
+      <ul>
+        <li>You must meet your region's minimum age and eligibility rules to enter paid competitions.</li>
+        <li>Match results are binding once confirmed by both players or reviewed by support.</li>
+        <li>Account and payment information would be handled under a real privacy policy, not this placeholder.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:14px; display:flex;">
+            <div class="mark"><span>1v1</span></div>
+            <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+          </a>
+          <p style="color:var(--text-faint); font-size:13px; max-width:260px; line-height:1.6;">A skill-based competitive gaming platform for duels, squads, and cash tournaments.</p>
+        </div>
+        <div>
+          <h4>Compete</h4>
+          <ul>
+            <li><a href="matchups.html">Open Matchups</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="games.html">Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="leaderboard.html">Leaderboards</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#terms">Terms &amp; Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p>Terms of Service · Privacy Policy · Responsible Play</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

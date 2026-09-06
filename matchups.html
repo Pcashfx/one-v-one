@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Matchups — One V One</title>
+<meta name="description" content="Browse live cash duels on One V One. Filter by game and jump into a head-to-head match for real money.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a> / Duels</div>
+      <h1>Open Matchups</h1>
+      <p>Head-to-head cash duels, filtered by game. Pick one that's open, agree the rules, and go.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="filter-bar" data-filter-group data-filter-target=".matchup-item">
+        <button class="chip active" data-filter="all">All games</button>
+        <button class="chip" data-filter="black-ops-7">Black Ops 7</button>
+        <button class="chip" data-filter="valorant">Valorant</button>
+        <button class="chip" data-filter="rocket-league">Rocket League</button>
+        <button class="chip" data-filter="fc-26">FC 26</button>
+        <button class="chip" data-filter="apex-legends">Apex Legends</button>
+      </div>
+
+      <div class="card-grid" id="matchup-list">
+        <div class="empty-state"><p>Loading matchups…</p></div>
+      </div>
+
+      <div class="empty-state" data-empty-state=".matchup-item" style="display:none; margin-top:24px;">
+        <p>No open matchups for that game right now — check back soon or post your own challenge.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Don't see your matchup? Post your own.</h2>
+        <button class="btn btn-gold" data-open-post-challenge>Post a Challenge</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:14px; display:flex;">
+            <div class="mark"><span>1v1</span></div>
+            <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+          </a>
+          <p style="color:var(--text-faint); font-size:13px; max-width:260px; line-height:1.6;">A skill-based competitive gaming platform for duels, squads, and cash tournaments.</p>
+        </div>
+        <div>
+          <h4>Compete</h4>
+          <ul>
+            <li><a href="matchups.html">Open Matchups</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="games.html">Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="leaderboard.html">Leaderboards</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#terms">Terms &amp; Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p>Terms of Service · Privacy Policy · Responsible Play</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal">
+      <h3>Sign in required</h3>
+      <p>Create a free account or sign in to challenge another player.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost btn-block" data-modal-close>Cancel</button>
+        <a href="signup.html" class="btn btn-gold btn-block">Join Free</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="create-matchup-modal">
+    <div class="modal" style="max-width:420px;">
+      <h3>Post a Challenge</h3>
+      <p>This creates a real open matchup other players can accept.</p>
+      <p class="form-msg" id="create-matchup-msg"></p>
+      <form id="create-matchup-form">
+        <div class="field">
+          <label for="create-matchup-game">Game</label>
+          <select id="create-matchup-game"><option value="">Loading games…</option></select>
+        </div>
+        <div class="field">
+          <label for="create-matchup-format">Format</label>
+          <input type="text" id="create-matchup-format" placeholder="e.g. 1v1 · Bo3">
+        </div>
+        <div class="field">
+          <label for="create-matchup-title">Rules summary</label>
+          <input type="text" id="create-matchup-title" placeholder="e.g. First to 13, pistols only">
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="create-matchup-prize">Prize ($)</label>
+            <input type="number" min="1" step="0.01" id="create-matchup-prize" placeholder="60">
+          </div>
+          <div class="field">
+            <label for="create-matchup-entry">Entry fee ($, optional)</label>
+            <input type="number" min="0" step="0.01" id="create-matchup-entry" placeholder="0">
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost btn-block" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-gold btn-block">Post It</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

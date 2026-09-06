@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games — One V One</title>
+<meta name="description" content="All games supported on One V One, filterable by platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .games-grid.full{grid-template-columns:repeat(4, 1fr);}
+  @media (max-width:800px){.games-grid.full{grid-template-columns:repeat(2, 1fr);}}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a> / Games</div>
+      <h1>Games</h1>
+      <p>Pick a title to see its open duels, tournaments, and ladders.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="filter-bar" data-filter-group data-filter-target=".game-item">
+        <button class="chip active" data-filter="all">All platforms</button>
+        <button class="chip" data-filter="cross">Cross-platform</button>
+        <button class="chip" data-filter="pc">PC</button>
+        <button class="chip" data-filter="playstation">PlayStation</button>
+        <button class="chip" data-filter="xbox">Xbox</button>
+      </div>
+
+      <div class="games-grid full">
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#2C1E12,#12141B);"><span class="glyph">⚔️</span><div class="gname">Black Ops 7</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#231a12,#12141B);"><span class="glyph">🧟</span><div class="gname">Black Ops 7 Zombies</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#1a2024,#12141B);"><span class="glyph">🪖</span><div class="gname">Warzone: Black Ops Royale</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="pc" style="--tile-grad: linear-gradient(160deg,#12262A,#12141B);"><span class="glyph">🎯</span><div class="gname">Valorant</div><div class="gplat">PC</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#231228,#12141B);"><span class="glyph">🚀</span><div class="gname">Rocket League</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="pc,playstation,xbox" style="--tile-grad: linear-gradient(160deg,#132318,#12141B);"><span class="glyph">🪂</span><div class="gname">Fortnite: Battle Royale</div><div class="gplat">PC · PS5 · Xbox</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#241717,#12141B);"><span class="glyph">🏈</span><div class="gname">Madden 27</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#1A2412,#12141B);"><span class="glyph">🏀</span><div class="gname">NBA 2K27</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#122024,#12141B);"><span class="glyph">🎮</span><div class="gname">Apex Legends</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#241220,#12141B);"><span class="glyph">⚽</span><div class="gname">FC 26</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="pc" style="--tile-grad: linear-gradient(160deg,#1a1a24,#12141B);"><span class="glyph">🛡️</span><div class="gname">League of Legends</div><div class="gplat">PC</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#241a2a,#12141B);"><span class="glyph">🦸</span><div class="gname">Marvel Rivals</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#2a1a1a,#12141B);"><span class="glyph">🌀</span><div class="gname">Halo Infinite</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#12241f,#12141B);"><span class="glyph">⚾</span><div class="gname">MLB The Show 26</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#241c12,#12141B);"><span class="glyph">🎓</span><div class="gname">College Football 27</div><div class="gplat">Cross-platform</div></a>
+        <a href="matchups.html" class="game-tile game-item" data-tags="cross" style="--tile-grad: linear-gradient(160deg,#221224,#12141B);"><span class="glyph">💣</span><div class="gname">Battlefield 6: Redsec</div><div class="gplat">Cross-platform</div></a>
+      </div>
+
+      <div class="empty-state" data-empty-state=".game-item" style="display:none; margin-top:24px;">
+        <p>No games on that platform yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:14px; display:flex;">
+            <div class="mark"><span>1v1</span></div>
+            <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+          </a>
+          <p style="color:var(--text-faint); font-size:13px; max-width:260px; line-height:1.6;">A skill-based competitive gaming platform for duels, squads, and cash tournaments.</p>
+        </div>
+        <div>
+          <h4>Compete</h4>
+          <ul>
+            <li><a href="matchups.html">Open Matchups</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="games.html">Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="leaderboard.html">Leaderboards</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#terms">Terms &amp; Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p>Terms of Service · Privacy Policy · Responsible Play</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

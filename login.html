@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — One V One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+        <a href="signup.html" class="btn btn-gold">Join Free</a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="wrap">
+      <div class="auth-card">
+        <h1>Sign In</h1>
+        <p class="sub">Good to see you back. Your matchups are waiting.</p>
+
+        <p class="form-msg" id="login-error" style="background:rgba(225,85,81,0.1); border-color:rgba(225,85,81,0.3); color:var(--red);"></p>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email">
+            <p class="field-error">Enter a valid email address.</p>
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password">
+            <p class="field-error">Password must be at least 6 characters.</p>
+          </div>
+          <button type="submit" class="btn btn-gold btn-block">Sign In</button>
+        </form>
+
+        <p class="auth-switch">New to One V One? <a href="signup.html">Create a free account</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-bottom" style="margin-top:0; border-top:none; padding-top:0;">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p><a href="faq.html">FAQ</a> · <a href="about.html#terms">Terms &amp; Privacy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

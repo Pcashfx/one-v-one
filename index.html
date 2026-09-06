@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One V One — Play. Duel. Get Paid.</title>
+<meta name="description" content="One V One is a skill-based competitive gaming platform. Challenge real opponents in cash duels and tournaments across Call of Duty, Valorant, Rocket League, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-row">
+          <span class="dot-live"></span>
+          <span>1,204 duels running right now</span>
+        </div>
+        <h1>Pick a fight.<br>Win the <span class="accent">purse.</span></h1>
+        <p class="lede">One V One is where skill turns into cash. Challenge a real opponent, set the rules, play your match, and get paid the moment you win — no dice rolls, no gimmicks.</p>
+        <div class="hero-ctas">
+          <a href="signup.html" class="btn btn-gold">Create Free Account</a>
+          <a href="matchups.html" class="btn btn-ghost">See Live Matchups</a>
+        </div>
+        <div class="trust-row">
+          <div><div class="num">$41.2M</div><div class="lbl">Paid to winners</div></div>
+          <div><div class="num">3.8M</div><div class="lbl">Duels completed</div></div>
+          <div><div class="num">96s</div><div class="lbl">Avg. payout time</div></div>
+        </div>
+      </div>
+
+      <div class="duel-card">
+        <span class="tag">FEATURED DUEL — BEST OF 3</span>
+        <div class="duel-face">
+          <div class="duel-player p1">
+            <div class="avatar"></div>
+            <div class="name">Reyna_</div>
+            <div class="rank">Expert · 2,140 pts</div>
+          </div>
+          <div class="duel-vs">VS</div>
+          <div class="duel-player p2">
+            <div class="avatar"></div>
+            <div class="name">kobrakid</div>
+            <div class="rank">Expert · 2,088 pts</div>
+          </div>
+        </div>
+        <div class="duel-meta">
+          <div class="duel-prize">$220<small>WINNER TAKES ALL</small></div>
+          <a href="matchups.html" class="btn btn-outline-gold">Spectate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIVE MATCHUPS ================= -->
+  <section id="matchups">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Open Matchups</h2>
+          <p>Jump into a cash duel that's filling up right now.</p>
+        </div>
+        <a href="matchups.html" class="see-all">Browse all matchups →</a>
+      </div>
+      <div class="matchup-scroll" id="home-matchup-scroll">
+        <div class="empty-state"><p>Loading matchups…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GAMES ================= -->
+  <section id="games">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Choose your game</h2>
+          <p>Every title on One V One supports duels, squads, and bracket tournaments.</p>
+        </div>
+        <a href="games.html" class="see-all">All games →</a>
+      </div>
+      <div class="games-grid">
+        <div class="game-tile" style="--tile-grad: linear-gradient(160deg,#2C1E12,#12141B);"><span class="glyph">⚔️</span><div class="gname">Black Ops 7</div><div class="gplat">Cross-platform</div></div>
+        <div class="game-tile" style="--tile-grad: linear-gradient(160deg,#12262A,#12141B);"><span class="glyph">🎯</span><div class="gname">Valorant</div><div class="gplat">PC</div></div>
+        <div class="game-tile" style="--tile-grad: linear-gradient(160deg,#231228,#12141B);"><span class="glyph">🚀</span><div class="gname">Rocket League</div><div class="gplat">Cross-platform</div></div>
+        <div class="game-tile" style="--tile-grad: linear-gradient(160deg,#132318,#12141B);"><span class="glyph">🪂</span><div class="gname">Fortnite</div><div class="gplat">PC · PS5 · XBX</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>How a duel works</h2>
+          <p>Three steps between you and the payout.</p>
+        </div>
+      </div>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="idx">01</div>
+          <h3>Set the terms</h3>
+          <p>Pick the game, format, and stake — or accept an open challenge someone else already posted.</p>
+        </div>
+        <div class="how-step">
+          <div class="idx">02</div>
+          <h3>Play it out</h3>
+          <p>Both sides submit the result. Disputed scores go to a support ticket with match evidence review.</p>
+        </div>
+        <div class="how-step">
+          <div class="idx">03</div>
+          <h3>Get paid</h3>
+          <p>Winnings land in your One V One balance immediately and can be withdrawn to your bank or card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section>
+    <div class="wrap">
+      <div class="stats-band">
+        <div class="stat-cell"><div class="num">3,821,904</div><div class="lbl">Duels played</div></div>
+        <div class="stat-cell"><div class="num">$41,207,655</div><div class="lbl">Winnings paid</div></div>
+        <div class="stat-cell"><div class="num">614</div><div class="lbl">Active tournaments</div></div>
+        <div class="stat-cell"><div class="num">92.4M</div><div class="lbl">XP earned</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEADERBOARD ================= -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>This week's top players</h2>
+          <p>Standings reset every Sunday at midnight ET.</p>
+        </div>
+        <a href="leaderboard.html" class="see-all">Full leaderboard →</a>
+      </div>
+      <div class="lb-table" id="home-leaderboard-list">
+        <div class="empty-state"><p>Loading leaderboard…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NEWS ================= -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Latest from the arena</h2></div>
+      </div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="thumb"></div>
+          <div class="body">
+            <div class="date">September 04</div>
+            <h3>Inside the ruling on last week's disputed Bo5 grand final</h3>
+            <p>A closer look at how the review desk handled a controversial overtime call and what changed for future brackets.</p>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="thumb"></div>
+          <div class="body">
+            <div class="date">September 02</div>
+            <h3>Five loadouts dominating Expert-tier duels this week</h3>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="thumb"></div>
+          <div class="body">
+            <div class="date">August 29</div>
+            <h3>New Switcharoo format is live for 3v3 community brackets</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Your next opponent is already waiting.</h2>
+        <a href="signup.html" class="btn btn-gold">Join Free — takes 60 seconds</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:14px; display:flex;">
+            <div class="mark"><span>1v1</span></div>
+            <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+          </a>
+          <p style="color:var(--text-faint); font-size:13px; max-width:260px; line-height:1.6;">A skill-based competitive gaming platform for duels, squads, and cash tournaments.</p>
+        </div>
+        <div>
+          <h4>Compete</h4>
+          <ul>
+            <li><a href="matchups.html">Open Matchups</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="games.html">Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="leaderboard.html">Leaderboards</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#terms">Terms &amp; Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p>Terms of Service · Privacy Policy · Responsible Play</p>
+      </div>
+      <p class="foot-legal">One V One is a skill-based competitive gaming platform. Game titles, publishers, and platform names referenced are trademarks of their respective owners and are used for identification purposes only; One V One is not affiliated with or endorsed by any game publisher.</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

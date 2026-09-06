@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tournaments — One V One</title>
+<meta name="description" content="Bracket-style community tournaments on One V One. Team up, enter a bracket, and compete for guaranteed cash prizes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a> / Tournaments</div>
+      <h1>Community Tournaments</h1>
+      <p>Bring a squad, enter a bracket, and fight through to the final. Guaranteed prize pools, single-elimination format.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="filter-bar" data-filter-group data-filter-target=".tourney-item">
+        <button class="chip active" data-filter="all">All tiers</button>
+        <button class="chip" data-filter="novice">Novice</button>
+        <button class="chip" data-filter="amateur">Amateur</button>
+        <button class="chip" data-filter="expert">Expert</button>
+        <button class="chip" data-filter="free">Free entry</button>
+      </div>
+
+      <div class="card-grid" id="tournament-list">
+        <div class="empty-state"><p>Loading tournaments…</p></div>
+      </div>
+
+      <div class="empty-state" data-empty-state=".tourney-item" style="display:none; margin-top:24px;">
+        <p>No tournaments match that filter right now — try a different tier.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>How brackets work</h2>
+          <p>Single elimination, straightforward scoring, guaranteed prize pools.</p>
+        </div>
+      </div>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="idx">01</div>
+          <h3>Register your team</h3>
+          <p>Pay the entry fee (or enter free where noted) and lock in your roster before the bracket fills.</p>
+        </div>
+        <div class="how-step">
+          <div class="idx">02</div>
+          <h3>Play your bracket</h3>
+          <p>Matches are scheduled automatically as the bracket advances. Report scores after each round.</p>
+        </div>
+        <div class="how-step">
+          <div class="idx">03</div>
+          <h3>Split the pool</h3>
+          <p>Prize pools pay out to the top finishers as soon as the final match is confirmed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom:14px; display:flex;">
+            <div class="mark"><span>1v1</span></div>
+            <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+          </a>
+          <p style="color:var(--text-faint); font-size:13px; max-width:260px; line-height:1.6;">A skill-based competitive gaming platform for duels, squads, and cash tournaments.</p>
+        </div>
+        <div>
+          <h4>Compete</h4>
+          <ul>
+            <li><a href="matchups.html">Open Matchups</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="games.html">Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="leaderboard.html">Leaderboards</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#terms">Terms &amp; Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p>Terms of Service · Privacy Policy · Responsible Play</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal">
+      <h3>Sign in required</h3>
+      <p>Create a free account or sign in to enter a bracket.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost btn-block" data-modal-close>Cancel</button>
+        <a href="signup.html" class="btn btn-gold btn-block">Join Free</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
