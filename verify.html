@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Your Identity — One V One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <div class="mark"><span>1v1</span></div>
+        <span class="one">ONE</span><span class="v">V</span><span class="one">ONE</span>
+      </a>
+      <nav class="primary">
+        <a href="matchups.html">Duels</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="balance"><span data-user-balance>$0.00</span></span>
+        <a href="login.html" class="btn btn-ghost auth-only-hide">Sign In</a>
+        <a href="signup.html" class="btn btn-gold auth-only-hide">Join Free</a>
+        <button class="btn btn-ghost auth-only-show" onclick="ovoLogout()">Log Out</button>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="wrap">
+      <div class="auth-card">
+        <h1>Verify Identity</h1>
+        <p class="sub">Required once, before your first withdrawal. Takes about two minutes — you'll need a photo ID and your camera for a selfie.</p>
+
+        <p class="form-msg" id="verify-msg"></p>
+
+        <div id="verify-not-signed-in" style="display:none;">
+          <p style="color:var(--text-dim); font-size:14px; margin-bottom:18px;">Sign in first to start verification.</p>
+          <a href="login.html" class="btn btn-gold btn-block">Sign In</a>
+        </div>
+
+        <div id="verify-already-done" style="display:none;">
+          <p style="color:var(--green); font-size:14px; margin-bottom:18px;">✓ Your identity is already verified.</p>
+          <a href="index.html" class="btn btn-ghost btn-block">Back to Home</a>
+        </div>
+
+        <div id="verify-start">
+          <button id="verify-start-btn" class="btn btn-gold btn-block">Start Verification</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-bottom" style="margin-top:0; border-top:none; padding-top:0;">
+        <p>© 2026 One V One. All rights reserved.</p>
+        <p><a href="faq.html">FAQ</a> · <a href="about.html#terms">Terms &amp; Privacy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (async function () {
+      var token = localStorage.getItem("ovo_token");
+      var startBox = document.getElementById("verify-start");
+      var notSignedIn = document.getElementById("verify-not-signed-in");
+      var alreadyDone = document.getElementById("verify-already-done");
+      var msg = document.getElementById("verify-msg");
+
+      if (!token) {
+        startBox.style.display = "none";
+        notSignedIn.style.display = "block";
+        return;
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("status") === "complete") {
+        msg.textContent = "Verification submitted — this can take a few minutes to confirm. Refresh this page to check status.";
+        msg.classList.add("show");
+      }
+
+      try {
+        var statusRes = await fetch((window.OVO_API_BASE || "http://localhost:4000/api") + "/kyc/status", {
+          headers: { Authorization: "Bearer " + token },
+        });
+        var statusData = await statusRes.json();
+        if (statusData.verified) {
+          startBox.style.display = "none";
+          alreadyDone.style.display = "block";
+          return;
+        }
+      } catch (err) {
+        // fall through to showing the start button
+      }
+
+      document.getElementById("verify-start-btn").addEventListener("click", async function () {
+        var btn = this;
+        btn.disabled = true;
+        btn.textContent = "Starting…";
+        try {
+          var res = await fetch((window.OVO_API_BASE || "http://localhost:4000/api") + "/kyc/start", {
+            method: "POST",
+            headers: { Authorization: "Bearer " + token },
+          });
+          var data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Couldn't start verification.");
+          if (data.alreadyVerified) {
+            alreadyDone.style.display = "block";
+            startBox.style.display = "none";
+            return;
+          }
+          window.location.href = data.url;
+        } catch (err) {
+          msg.textContent = err.message;
+          msg.classList.add("show");
+          btn.disabled = false;
+          btn.textContent = "Start Verification";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

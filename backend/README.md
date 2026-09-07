@@ -94,6 +94,43 @@ python3 -m http.server 5500
 `config.js` defaults to `http://localhost:4000/api`, matching the backend's
 default `PORT`, so local dev works without editing anything.
 
+## Identity verification (Stripe Identity) — now wired up
+
+`routes/kyc.js` and `routes/kycWebhook.js` implement real Stripe Identity
+verification:
+
+| Method | Path | Auth | Description |
+|---|---|---|---|
+| POST | `/api/kyc/start` | ✅ | Creates a verification session, returns a hosted URL to redirect the user to |
+| GET | `/api/kyc/status` | ✅ | Returns `{ verified: true/false }` for the current user |
+| POST | `/api/kyc/webhook` | – (Stripe signs it) | Stripe calls this when a session completes; sets `users.identity_verified` |
+
+`wallet.js`'s withdraw endpoint now checks `users.identity_verified` for
+real instead of the old always-false stub.
+
+### Setup
+
+1. Create a Stripe account at stripe.com (free to create; this is separate
+   from the payment-processing restriction discussed elsewhere in this
+   README — Identity is a verification product, not a payment rail. Still
+   worth confirming with Stripe directly that it's available for this kind
+   of business before relying on it).
+2. Dashboard → **Developers → API keys** → copy the **Secret key** → set
+   as `STRIPE_SECRET_KEY`.
+3. Dashboard → **Developers → Webhooks** → **Add endpoint** → URL:
+   `https://your-backend-url.onrender.com/api/kyc/webhook` → select the
+   `identity.verification_session.verified` event → create → copy the
+   **Signing secret** → set as `STRIPE_WEBHOOK_SECRET`.
+4. Set `FRONTEND_URL` to your deployed frontend (e.g.
+   `https://1v1codm.netlify.app`) — Stripe redirects users back there when
+   they finish.
+5. The front end's `verify.html` page calls these endpoints already — no
+   frontend changes needed once the env vars above are set.
+
+**Note:** Stripe Identity has its own per-verification cost even outside
+of payment processing — check current pricing on Stripe's site before
+turning this on for real users.
+
 ## Payments & identity verification
 
 Nothing here moves real money or verifies a real identity yet — `wallet.js`
@@ -102,9 +139,8 @@ need accounts with real providers, opened and verified under your own
 business:
 
 **Identity/age verification (KYC)**
-- Stripe Identity, Persona, or Veriff are the common choices; all offer a
-  hosted verification flow plus a webhook you'd use to set a
-  `users.identity_verified` flag.
+- Now implemented for real — see the "Identity verification (Stripe
+  Identity) — now wired up" section above.
 
 **Payment processing / payouts**
 - Stripe is the default choice for most marketplaces, but skill-based cash

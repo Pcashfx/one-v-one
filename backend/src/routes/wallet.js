@@ -30,14 +30,16 @@ router.get(
 
 /**
  * ---------------------------------------------------------------------
- * DEPOSIT / WITHDRAWAL — NOT connected to a real payment rail.
+ * DEPOSIT / WITHDRAWAL — still NOT connected to a real payment rail.
  * ---------------------------------------------------------------------
- * See the equivalent note in the previous SQLite version of this file —
- * unchanged: this needs a real payment-provider account (Stripe Connect,
- * or a specialist high-risk/skill-gaming processor) and a real identity
- * verification provider (Stripe Identity, Persona, Veriff) before any of
- * this can move real money. The two stub functions below are the exact
- * points to wire that in.
+ * Identity verification IS now wired up for real (see ../routes/kyc.js
+ * and ../routes/kycWebhook.js — Stripe Identity), so withdraw correctly
+ * blocks until users.identity_verified is true. What's still missing is
+ * the actual money movement: a payment-provider account (Stripe Connect
+ * is not usable for this category — see conversation history/README —
+ * so realistically a specialist high-risk/skill-gaming processor like
+ * PaymentCloud, Durango Merchant Services, or Paysafe once you have one
+ * approved), wired in below.
  * ---------------------------------------------------------------------
  */
 
@@ -71,10 +73,11 @@ router.post(
       return res.status(402).json({ error: "Insufficient balance." });
     }
 
-    const verified = await isIdentityVerifiedStub(req.userId);
+    const verified = await isIdentityVerified(req.userId);
     if (!verified) {
       return res.status(403).json({
-        error: "Identity verification is required before withdrawing. See src/routes/wallet.js.",
+        error: "Identity verification is required before withdrawing.",
+        verifyUrl: "/api/kyc/start",
       });
     }
 
@@ -88,8 +91,9 @@ async function createPaymentIntentStub(_userId, _amountCents) {
   return null;
 }
 
-async function isIdentityVerifiedStub(_userId) {
-  return false;
+async function isIdentityVerified(userId) {
+  const result = await query("SELECT identity_verified FROM users WHERE id = $1", [userId]);
+  return !!(result.rows[0] && result.rows[0].identity_verified);
 }
 
 module.exports = router;

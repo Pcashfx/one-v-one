@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
   balance_cents INTEGER NOT NULL DEFAULT 0,
   age_confirmed BOOLEAN NOT NULL DEFAULT FALSE,
   terms_accepted BOOLEAN NOT NULL DEFAULT FALSE,
+  identity_verified BOOLEAN NOT NULL DEFAULT FALSE,
+  identity_verification_session_id TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -72,3 +74,9 @@ CREATE TABLE IF NOT EXISTS wallet_transactions (
 CREATE INDEX IF NOT EXISTS idx_matchups_status ON matchups(status);
 CREATE INDEX IF NOT EXISTS idx_tournaments_status ON tournaments(status);
 CREATE INDEX IF NOT EXISTS idx_wallet_user ON wallet_transactions(user_id);
+
+-- Migration: adds identity verification columns to a users table that may
+-- already exist from before this feature was added (CREATE TABLE IF NOT
+-- EXISTS above won't add columns to an existing table, so this covers it).
+ALTER TABLE users ADD COLUMN IF NOT EXISTS identity_verified BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS identity_verification_session_id TEXT;
