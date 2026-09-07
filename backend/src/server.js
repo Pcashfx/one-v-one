@@ -11,8 +11,6 @@ const leaderboardRoutes = require("./routes/leaderboard");
 const walletRoutes = require("./routes/wallet");
 const gameRoutes = require("./routes/games");
 
-initSchema();
-
 const app = express();
 const allowedOrigins = (process.env.CORS_ORIGIN || "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -46,6 +44,15 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`One V One API listening on http://localhost:${port}`);
+
+async function start() {
+  await initSchema();
+  app.listen(port, () => {
+    console.log(`One V One API listening on http://localhost:${port}`);
+  });
+}
+
+start().catch((err) => {
+  console.error("Failed to start server:", err);
+  process.exit(1);
 });

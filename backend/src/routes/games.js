@@ -1,11 +1,15 @@
 const express = require("express");
-const { db } = require("../db");
+const { query } = require("../db");
+const asyncHandler = require("../utils/asyncHandler");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const games = db.prepare("SELECT id, name, slug, platform FROM games ORDER BY name").all();
-  res.json({ games });
-});
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const result = await query("SELECT id, name, slug, platform FROM games ORDER BY name");
+    res.json({ games: result.rows });
+  })
+);
 
 module.exports = router;

@@ -10,15 +10,38 @@ clearly marked stubs (see "Payments & identity verification" below).
 cd backend
 npm install
 cp .env.example .env
-# open .env and set a real JWT_SECRET (e.g. `openssl rand -hex 32`)
-npm run seed     # creates the SQLite file and inserts sample games/matchups
+# open .env and set:
+#   JWT_SECRET   (e.g. `openssl rand -hex 32`)
+#   DATABASE_URL (a Postgres connection string — see below)
+npm run seed     # creates tables and inserts sample games/matchups if empty
 npm run dev       # starts the API on http://localhost:4000
 ```
 
-> This was written and syntax-checked in an environment without internet
-> access, so `npm install` and a live boot haven't been run end-to-end here.
-> The code follows standard Express/better-sqlite3 patterns and should run
-> as-is, but test it locally before relying on it.
+### Getting a Postgres database
+
+This project uses PostgreSQL, not SQLite, so your data survives redeploys.
+Easiest free option — Render's own managed Postgres:
+
+1. In your Render dashboard: **New +** → **PostgreSQL**.
+2. Give it a name, leave the free plan selected, click **Create Database**.
+3. Once it's ready, copy the **Internal Database URL** (if your web service
+   is also on Render — faster, and doesn't count against external limits)
+   or the **External Database URL** (for connecting from your own machine).
+4. Paste that into `DATABASE_URL` in your `.env` (local) and in your web
+   service's Environment tab on Render (production) — then remove the old
+   `DATABASE_PATH` variable if it's still there from an earlier setup.
+5. Redeploy. The start command already runs `npm run seed` first, which
+   creates the tables automatically on an empty database.
+
+**Free tier note:** Render's free Postgres instance is deleted after 90
+days unless you upgrade to a paid plan before then. That's still a huge
+improvement over SQLite on the free web service (which reset on every
+redeploy) — just don't forget the 90-day clock once you have real users.
+
+> This was written and syntax-checked without internet access in the
+> environment that produced it, so a live boot against a real Postgres
+> instance hasn't been run end-to-end here. Standard `pg` + Express
+> patterns, should run as-is — test locally before relying on it.
 
 ## API reference
 
